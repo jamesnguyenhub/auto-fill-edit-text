@@ -12,9 +12,8 @@
     tools:context="com.tuyenmonkey.sample.MainActivity"
     >
 
-  <TextView
-      android:layout_width="wrap_content"
+  <com.tuyenmonkey.autofilledittext.AutoFilledEditText
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Hello World!"
       />
 </RelativeLayout>
