@@ -10,8 +10,7 @@ import java.util.List;
 public class NormalSelectionStrategy extends SelectionStrategy {
 
   public NormalSelectionStrategy(List<String> suggestions) {
-    nonSelectionText = "";
-    this.suggestions = suggestions;
+    super(suggestions);
   }
 
   @Override void apply(EditText editText, String fullText) {

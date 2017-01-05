@@ -14,7 +14,7 @@ public class AutoFilledEditText extends AppCompatEditText {
 
   private SelectionStrategy selectionStrategy;
   private List<String> suggestions;
-  private boolean firstRequest;
+  private boolean firstChange;
 
   public AutoFilledEditText(Context context) {
     super(context);
@@ -34,15 +34,15 @@ public class AutoFilledEditText extends AppCompatEditText {
 
   private void init() {
     suggestions = new ArrayList<>();
-    suggestions.add("0935090090");
-    suggestions.add("0909348392");
-    selectionStrategy = new NormalSelectionStrategy(suggestions);
+    suggestions.add("gmail.com");
+    suggestions.add("tiki.vn");
+    selectionStrategy = new EmailSelectionStrategy(suggestions);
   }
 
   @Override
   protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
-    if (!firstRequest) {
-      firstRequest = true;
+    if (!firstChange) {
+      firstChange = true;
       return;
     }
 

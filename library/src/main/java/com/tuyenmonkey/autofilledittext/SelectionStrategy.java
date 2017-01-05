@@ -13,5 +13,10 @@ public abstract class SelectionStrategy {
   protected boolean suggested;
   protected String nonSelectionText;
 
+  public SelectionStrategy(List<String> suggestions) {
+    this.suggestions = suggestions;
+    this.nonSelectionText = "";
+  }
+
   abstract void apply(EditText editText, String fullText);
 }
