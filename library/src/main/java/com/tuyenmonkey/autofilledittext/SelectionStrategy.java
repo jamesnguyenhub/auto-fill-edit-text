@@ -9,14 +9,16 @@ import java.util.List;
 
 public abstract class SelectionStrategy {
 
+  protected EditText editText;
   protected List<String> suggestions;
   protected boolean suggested;
   protected String nonSelectionText;
 
-  public SelectionStrategy(List<String> suggestions) {
+  public SelectionStrategy(EditText editText, List<String> suggestions) {
+    this.editText = editText;
     this.suggestions = suggestions;
     this.nonSelectionText = "";
   }
 
-  abstract void apply(EditText editText, String fullText);
+  abstract void apply(String fullText);
 }

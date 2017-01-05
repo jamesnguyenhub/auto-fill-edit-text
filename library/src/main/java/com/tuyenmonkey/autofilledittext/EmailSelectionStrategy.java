@@ -9,11 +9,11 @@ import java.util.List;
 
 public class EmailSelectionStrategy extends SelectionStrategy {
 
-  public EmailSelectionStrategy(List<String> suggestions) {
-    super(suggestions);
+  public EmailSelectionStrategy(EditText editText, List<String> suggestions) {
+    super(editText, suggestions);
   }
 
-  @Override void apply(EditText editText, String fullText) {
+  @Override void apply(String fullText) {
     if (fullText.length() <= nonSelectionText.length()) {
       nonSelectionText = fullText;
       suggested = false;
@@ -29,17 +29,17 @@ public class EmailSelectionStrategy extends SelectionStrategy {
       int atIndex = fullText.lastIndexOf('@');
 
       if (atIndex > -1 && atIndex < fullText.length() - 1) {
-        String nonSelectionPartOfMailTail = fullText.substring(atIndex + 1, fullText.length());
-        String textBeforeMailType = fullText.substring(0, atIndex + 1);
+        String nonSelectionTextOfEmailTail = fullText.substring(atIndex + 1, fullText.length());
+        String username = fullText.substring(0, atIndex + 1);
 
-        if (suggestion.startsWith(nonSelectionPartOfMailTail)) {
+        if (suggestion.startsWith(nonSelectionTextOfEmailTail)) {
           suggested = true;
 
-          String fullEmail = textBeforeMailType + suggestion;
-          nonSelectionText = textBeforeMailType + nonSelectionPartOfMailTail;
+          String fullEmail = username + suggestion;
+          nonSelectionText = username + nonSelectionTextOfEmailTail;
 
           editText.setText(fullEmail);
-          editText.setSelection(atIndex + nonSelectionPartOfMailTail.length() + 1, fullEmail.length());
+          editText.setSelection(atIndex + nonSelectionTextOfEmailTail.length() + 1, fullEmail.length());
           break;
         }
       }

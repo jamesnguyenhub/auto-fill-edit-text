@@ -9,11 +9,11 @@ import java.util.List;
 
 public class NormalSelectionStrategy extends SelectionStrategy {
 
-  public NormalSelectionStrategy(List<String> suggestions) {
-    super(suggestions);
+  public NormalSelectionStrategy(EditText editText, List<String> suggestions) {
+    super(editText, suggestions);
   }
 
-  @Override void apply(EditText editText, String fullText) {
+  @Override void apply(String fullText) {
     if (nonSelectionText.length() >= fullText.length()) {
       suggested = false;
       nonSelectionText = fullText;

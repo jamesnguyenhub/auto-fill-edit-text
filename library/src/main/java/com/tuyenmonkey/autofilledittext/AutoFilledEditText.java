@@ -36,7 +36,7 @@ public class AutoFilledEditText extends AppCompatEditText {
     suggestions = new ArrayList<>();
     suggestions.add("gmail.com");
     suggestions.add("tiki.vn");
-    selectionStrategy = new EmailSelectionStrategy(suggestions);
+    selectionStrategy = new EmailSelectionStrategy(this, suggestions);
   }
 
   @Override
@@ -46,10 +46,10 @@ public class AutoFilledEditText extends AppCompatEditText {
       return;
     }
 
-    selectionStrategy.apply(this, text.toString());
+    selectionStrategy.apply(text.toString());
   }
 
   public void setSuggestions(List<String> suggestions) {
-    this.suggestions = suggestions;
+    this.suggestions.addAll(suggestions);
   }
 }
