@@ -12,9 +12,8 @@ import java.util.List;
 
 public class AutoFilledEditText extends AppCompatEditText {
 
+  private SelectionStrategy selectionStrategy;
   private List<String> suggestions;
-  private boolean suggested;
-  private String nonSelectionText;
   private boolean firstRequest;
 
   public AutoFilledEditText(Context context) {
@@ -34,8 +33,10 @@ public class AutoFilledEditText extends AppCompatEditText {
   }
 
   private void init() {
-    nonSelectionText = "";
     suggestions = new ArrayList<>();
+    suggestions.add("0935090090");
+    suggestions.add("0909348392");
+    selectionStrategy = new NormalSelectionStrategy(suggestions);
   }
 
   @Override
@@ -45,26 +46,7 @@ public class AutoFilledEditText extends AppCompatEditText {
       return;
     }
 
-    if (nonSelectionText.length() >= text.length()) {
-      suggested = false;
-      nonSelectionText = text.toString();
-      return;
-    }
-
-    if (suggested) {
-      suggested = false;
-      return;
-    }
-
-    for (String suggestion : suggestions) {
-      if (suggestion.contains(text)) {
-        suggested = true;
-        setText(suggestion);
-        setSelection(text.length(), suggestion.length());
-        nonSelectionText = text.toString();
-        break;
-      }
-    }
+    selectionStrategy.apply(this, text.toString());
   }
 
   public void setSuggestions(List<String> suggestions) {
