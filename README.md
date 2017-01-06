@@ -1,4 +1,4 @@
-# Text Decorator
+# Auto Fill EditText
 
 
 ## Usage
