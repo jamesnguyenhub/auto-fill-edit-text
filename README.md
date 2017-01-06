@@ -21,7 +21,7 @@ or in xml
 </resources>
 ```
 
-*Step 2:* Include view in your layout. At this time, I support 2 modes. The default one is `normal` that will suggest the whole text the `email` one that will suggest the domain after `@`.
+*Step 2:* Include view in your layout. At this time, I support 2 modes. The default one is `normal` that will suggest the whole text and the `email` one that will suggest the domain after `@`.
 ```xml
 <com.tuyenmonkey.AutoFillEditText
       android:id="@+id/afetEmail"
