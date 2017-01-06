@@ -1,6 +1,7 @@
 package com.tuyenmonkey;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import java.util.ArrayList;
@@ -18,25 +19,37 @@ public class AutoFillEditText extends AppCompatEditText {
 
   public AutoFillEditText(Context context) {
     super(context);
-    init();
+    init(context, null);
   }
 
   public AutoFillEditText(Context context, AttributeSet attrs) {
     super(context, attrs);
-    init();
+    init(context, attrs);
 
   }
 
   public AutoFillEditText(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
-    init();
+    init(context, attrs);
   }
 
-  private void init() {
+  private void init(Context context, AttributeSet attrs) {
     suggestions = new ArrayList<>();
     suggestions.add("gmail.com");
     suggestions.add("tiki.vn");
     textFillStrategy = new EmailFillStrategy(this, suggestions);
+
+    if (attrs != null) {
+      TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AutoFillEditText);
+
+      try {
+        CharSequence[] values = a.getTextArray(R.styleable.AutoFillEditText_suggestions);
+      } catch (Exception ex) {
+        ex.printStackTrace();
+      } finally {
+        a.recycle();
+      }
+    }
   }
 
   @Override
