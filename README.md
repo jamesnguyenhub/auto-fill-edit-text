@@ -3,7 +3,33 @@
 ![](screenshots/screenshot-2.gif)
 
 ## Usage
+*Step 1:* Define your suggestions list
+In Java code
+```java
+editText.addSuggestions(Arrays.asList("hotmail.com", "microsoft.com"));
+```
+or in xml
+```xml
+<resources>
+  <string-array name="emails">
+    <item>tuyenmonkey.com</item>
+    <item>tiki.vn</item>
+    <item>gmail.com</item>
+    <item>yahoo.com</item>
+  </string-array>
+</resources>
+```
 
+*Step 2:* Include view in your layout. At this time, I support 2 modes. The default one is `normal` that will suggest the whole text the `email` one that will suggest the domain after `@`.
+```xml
+<com.tuyenmonkey.AutoFillEditText
+      android:id="@+id/afetEmail"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:mode="email"
+      app:suggestions="@array/emails"
+      />
+```
 
 ## Download
 
