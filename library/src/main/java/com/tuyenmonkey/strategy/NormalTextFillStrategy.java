@@ -1,4 +1,4 @@
-package com.tuyenmonkey;
+package com.tuyenmonkey.strategy;
 
 import android.widget.EditText;
 import java.util.List;
@@ -13,7 +13,7 @@ public class NormalTextFillStrategy extends TextFillStrategy {
     super(editText, suggestions);
   }
 
-  @Override void apply(String fullText) {
+  @Override public void apply(String fullText) {
     if (nonSelectionText.length() >= fullText.length()) {
       suggested = false;
       nonSelectionText = fullText;

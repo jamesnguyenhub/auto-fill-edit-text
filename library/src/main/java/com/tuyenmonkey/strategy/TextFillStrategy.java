@@ -1,4 +1,4 @@
-package com.tuyenmonkey;
+package com.tuyenmonkey.strategy;
 
 import android.widget.EditText;
 import java.util.List;
@@ -20,5 +20,5 @@ public abstract class TextFillStrategy {
     this.nonSelectionText = "";
   }
 
-  abstract void apply(String fullText);
+  public abstract void apply(String fullText);
 }

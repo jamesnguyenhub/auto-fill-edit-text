@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
+import com.tuyenmonkey.strategy.EmailFillStrategy;
+import com.tuyenmonkey.strategy.Mode;
+import com.tuyenmonkey.strategy.NormalTextFillStrategy;
+import com.tuyenmonkey.strategy.TextFillStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +17,7 @@ import java.util.List;
 
 public class AutoFillEditText extends AppCompatEditText {
 
+  private Mode mode;
   private TextFillStrategy textFillStrategy;
   private List<String> suggestions;
   private boolean firstChange;
@@ -35,21 +40,34 @@ public class AutoFillEditText extends AppCompatEditText {
 
   private void init(Context context, AttributeSet attrs) {
     suggestions = new ArrayList<>();
-    suggestions.add("gmail.com");
-    suggestions.add("tiki.vn");
-    textFillStrategy = new EmailFillStrategy(this, suggestions);
+    mode = Mode.NORMAL;
 
     if (attrs != null) {
       TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AutoFillEditText);
 
       try {
-        CharSequence[] values = a.getTextArray(R.styleable.AutoFillEditText_suggestions);
+        CharSequence[] suggestionsValue = a.getTextArray(R.styleable.AutoFillEditText_suggestions);
+        String modeValue = a.getString(R.styleable.AutoFillEditText_mode);
+
+        if (suggestionsValue != null) {
+          for (CharSequence value : suggestionsValue) {
+            suggestions.add(value.toString());
+          }
+        }
+
+        if (modeValue != null && modeValue.equals("email")) {
+          mode = Mode.EMAIL;
+        }
       } catch (Exception ex) {
         ex.printStackTrace();
       } finally {
         a.recycle();
       }
     }
+
+    textFillStrategy = (mode == Mode.EMAIL)
+        ? new EmailFillStrategy(this, suggestions)
+        : new NormalTextFillStrategy(this, suggestions);
   }
 
   @Override
@@ -64,5 +82,13 @@ public class AutoFillEditText extends AppCompatEditText {
 
   public void addSuggestions(List<String> suggestions) {
     this.suggestions.addAll(suggestions);
+  }
+
+  public void addSuggestion(String suggestion) {
+    this.suggestions.add(suggestion);
+  }
+
+  public void setMode(Mode mode) {
+    this.mode = mode;
   }
 }
