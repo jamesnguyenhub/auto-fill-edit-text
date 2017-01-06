@@ -1,5 +1,6 @@
 # Auto Fill EditText
-
+![](screenshots/screenshot-1.gif)
+![](screenshots/screenshot-2.gif)
 
 ## Usage
 
