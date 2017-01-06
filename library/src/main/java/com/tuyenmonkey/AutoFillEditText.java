@@ -10,24 +10,24 @@ import java.util.List;
  * Created by Tuyen Nguyen on 1/3/17.
  */
 
-public class AutoFilledEditText extends AppCompatEditText {
+public class AutoFillEditText extends AppCompatEditText {
 
-  private SelectionStrategy selectionStrategy;
+  private TextFillStrategy textFillStrategy;
   private List<String> suggestions;
   private boolean firstChange;
 
-  public AutoFilledEditText(Context context) {
+  public AutoFillEditText(Context context) {
     super(context);
     init();
   }
 
-  public AutoFilledEditText(Context context, AttributeSet attrs) {
+  public AutoFillEditText(Context context, AttributeSet attrs) {
     super(context, attrs);
     init();
 
   }
 
-  public AutoFilledEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+  public AutoFillEditText(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
     init();
   }
@@ -36,7 +36,7 @@ public class AutoFilledEditText extends AppCompatEditText {
     suggestions = new ArrayList<>();
     suggestions.add("gmail.com");
     suggestions.add("tiki.vn");
-    selectionStrategy = new EmailSelectionStrategy(this, suggestions);
+    textFillStrategy = new EmailFillStrategy(this, suggestions);
   }
 
   @Override
@@ -46,10 +46,10 @@ public class AutoFilledEditText extends AppCompatEditText {
       return;
     }
 
-    selectionStrategy.apply(text.toString());
+    textFillStrategy.apply(text.toString());
   }
 
-  public void setSuggestions(List<String> suggestions) {
+  public void addSuggestions(List<String> suggestions) {
     this.suggestions.addAll(suggestions);
   }
 }

@@ -12,7 +12,7 @@
     tools:context="com.tuyenmonkey.sample.MainActivity"
     >
 
-  <com.tuyenmonkey.AutoFilledEditText
+  <com.tuyenmonkey.AutoFillEditText
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       />

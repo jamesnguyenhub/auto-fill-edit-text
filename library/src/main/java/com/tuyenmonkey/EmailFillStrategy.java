@@ -7,9 +7,9 @@ import java.util.List;
  * Created by Tuyen Nguyen on 1/6/17.
  */
 
-public class EmailSelectionStrategy extends SelectionStrategy {
+public class EmailFillStrategy extends TextFillStrategy {
 
-  public EmailSelectionStrategy(EditText editText, List<String> suggestions) {
+  public EmailFillStrategy(EditText editText, List<String> suggestions) {
     super(editText, suggestions);
   }
 

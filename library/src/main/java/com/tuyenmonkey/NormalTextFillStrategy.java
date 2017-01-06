@@ -7,9 +7,9 @@ import java.util.List;
  * Created by Tuyen Nguyen on 1/5/17.
  */
 
-public class NormalSelectionStrategy extends SelectionStrategy {
+public class NormalTextFillStrategy extends TextFillStrategy {
 
-  public NormalSelectionStrategy(EditText editText, List<String> suggestions) {
+  public NormalTextFillStrategy(EditText editText, List<String> suggestions) {
     super(editText, suggestions);
   }
 
