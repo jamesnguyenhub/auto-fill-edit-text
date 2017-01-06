@@ -29,17 +29,17 @@ public class EmailFillStrategy extends TextFillStrategy {
       int atIndex = fullText.lastIndexOf('@');
 
       if (atIndex > -1 && atIndex < fullText.length() - 1) {
-        String nonSelectionTextOfEmailTail = fullText.substring(atIndex + 1, fullText.length());
+        String nonSelectionOfDomain = fullText.substring(atIndex + 1, fullText.length());
         String username = fullText.substring(0, atIndex + 1);
 
-        if (suggestion.startsWith(nonSelectionTextOfEmailTail)) {
+        if (suggestion.startsWith(nonSelectionOfDomain)) {
           suggested = true;
 
           String fullEmail = username + suggestion;
-          nonSelectionText = username + nonSelectionTextOfEmailTail;
+          nonSelectionText = username + nonSelectionOfDomain;
 
           editText.setText(fullEmail);
-          editText.setSelection(atIndex + nonSelectionTextOfEmailTail.length() + 1, fullEmail.length());
+          editText.setSelection(atIndex + nonSelectionOfDomain.length() + 1, fullEmail.length());
           break;
         }
       }
