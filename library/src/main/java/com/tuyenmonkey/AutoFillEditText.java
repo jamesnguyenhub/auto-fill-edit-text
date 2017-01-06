@@ -87,8 +87,4 @@ public class AutoFillEditText extends AppCompatEditText {
   public void addSuggestion(String suggestion) {
     this.suggestions.add(suggestion);
   }
-
-  public void setMode(Mode mode) {
-    this.mode = mode;
-  }
 }
