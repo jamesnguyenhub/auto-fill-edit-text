@@ -1,5 +1,8 @@
 # Auto Fill EditText
+[![Build Status](https://travis-ci.org/nntuyen/auto-fill-edit-text.svg?branch=master)](https://travis-ci.org/nntuyen/auto-fill-edit-text)
+
 You don't need to type the whole text. You just type some and it will suggest the remaining part.
+
 ![](screenshots/screenshot-1.gif)
 ![](screenshots/screenshot-2.gif)
 
