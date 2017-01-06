@@ -1,4 +1,5 @@
 # Auto Fill EditText
+You don't need to type the whole text. You just type some and it will suggest the remaining part.
 ![](screenshots/screenshot-1.gif)
 ![](screenshots/screenshot-2.gif)
 
@@ -32,6 +33,9 @@ or in xml
 ```
 
 ## Download
+Gradle:
+
+Snapshots of the development version are available in [Sonatype's `snapshots` repository](https://oss.sonatype.org/content/repositories/snapshots/).
 
 ## License
 
