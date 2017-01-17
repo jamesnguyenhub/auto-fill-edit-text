@@ -1,4 +1,5 @@
 # Auto Fill EditText
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Auto%20Fill%20EditText-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5084)
 [![Build Status](https://travis-ci.org/nntuyen/auto-fill-edit-text.svg?branch=master)](https://travis-ci.org/nntuyen/auto-fill-edit-text)
 
 You don't need to type the whole text. You just type some and it will suggest the remaining part.
